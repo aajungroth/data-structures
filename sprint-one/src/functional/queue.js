@@ -13,7 +13,7 @@ var Queue = function() {
   };
 
   someInstance.dequeue = function() {
-    var dequeued = sotrage[0];
+    var dequeued = storage[0];
 
     delete storage[0];
     for (var i = 0; i < size; i++) {
@@ -22,6 +22,12 @@ var Queue = function() {
 
     if (size > 0) {
       size--;
+    }
+
+    for (var key in storage) {
+      if (storage[key] === undefined) {
+        delete storage[key];
+      }
     }
 
     return dequeued;
