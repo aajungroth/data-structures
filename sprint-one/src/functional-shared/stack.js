@@ -15,7 +15,7 @@ var stackMethods = {
   },
   push : function(val) {
     this[this._size] = val;
-    console.log('THIS', this);
+    //console.log('THIS', this);
     this._size++;
   },
   pop : function() {
