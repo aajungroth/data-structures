@@ -4,7 +4,7 @@ var Queue = function() {
   // Use an object with numeric keys to store values
   var storage = {};
   var size = 0;
-  var front = 0;
+
   // Implement the methods below
 
   someInstance.enqueue = function(value) {
@@ -13,11 +13,15 @@ var Queue = function() {
   };
 
   someInstance.dequeue = function() {
-    var dequeued = storage[front];
-    delete storage[front];
+    var dequeued = sotrage[0];
+
+    delete storage[0];
+    for (var i = 0; i < size; i++) {
+      storage[i] = storage[i + 1];
+    }
+
     if (size > 0) {
       size--;
-      front++;
     }
 
     return dequeued;
