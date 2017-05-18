@@ -13,20 +13,25 @@ var stackMethods = {};
 
 
 stackMethods.size = function() {
-  console.log('THIS', this);
+  //console.log('THIS', this);
   return this._size;
 };
 
-stackMethods.push = function() {
-  this._size++;
+stackMethods.push = function(val) {
+  var self = this;
+  self._size++;
+  this[self._size] = val;
 };
 
 stackMethods.pop = function() {
-  //var stackInstance = this;
-  var stackSize = this._size;
-  if (this._size) {
-    this._size--;
+  var self = this;
+  var popped = self[self._size];
+  delete self[self._size];
+  // var stackSize = this._size;
+  if (self._size) {
+    self._size--;
   }
+  return popped;
 };
 
 // stackMethods.prototype.size = a => {};
