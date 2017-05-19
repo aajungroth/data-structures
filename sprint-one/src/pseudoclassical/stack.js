@@ -10,5 +10,20 @@ Stack.prototype.size = function() {
   return this._size;
 };
 
+Stack.prototype.push = function(value) {
+  this._size++;
+  this[this._size] = value;
+};
+
+Stack.prototype.pop = function() {
+  var popped = this[this._size];
+
+  delete this[this._size];
+  if (this._size > 0) {
+    this._size--;
+  }
+  return popped;
+};
+
 // protoype is like stack methods
 // if you make a method inside then all instances would get one
