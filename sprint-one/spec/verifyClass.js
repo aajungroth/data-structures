@@ -119,7 +119,7 @@ define(['../../lib/chai/chai.js', '../../lib/underscore/underscore.js'], functio
 
         var referencesReturn = requireOption('referencesReturn');
         it(might('reference the return keyword', referencesReturn), function() {
-          assuming(referencesReturn).expect(/return/.test(constructor)).to.be.false;
+          assuming(referencesReturn).expect(/return/.test(constructor)).to.be.true;
         });
 
         var declaresVariables = requireOption('declaresVariables');
