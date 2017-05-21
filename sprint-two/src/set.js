@@ -21,3 +21,10 @@ setPrototype.remove = function(item) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+  //add O(1) the set is implemented with an object, and since objects are
+    //implemented with hash tables, the add is still taking advantage of
+    //the hashing function
+  //remove O(1) the set is implemented with an object, and since objects are
+    //implemented with hash tables, the remove is still taking advantage of
+    //the hashing function
+  //contains O(n) the function runs the call back on every single node

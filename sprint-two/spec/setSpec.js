@@ -24,4 +24,12 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  it('should not contain duplicate values', function() {
+    set.add('foo');
+    set.add('foo');
+
+    expect( JSON.stringify(set._storage) ).to.equal(`{"foo":"foo"}`);
+    // expect(set.contains('Susan Sarandon')).to.equal(true);
+  });
+
 });
