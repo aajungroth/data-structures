@@ -1,5 +1,3 @@
-
-
 // Instantiate a new graph
 var Graph = function() {
   this.nodes = [];
@@ -83,6 +81,28 @@ Graph.prototype.forEachNode = function(cb) {
   }
 };
 
+// Graph.prototype.forEachEdge = function(node, cb) {
+// }
+
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+
+// addNode
+  // O(1) constant time bc pushing to back of graphs array
+// contains
+  // O(n) linear time due to for loop
+
+// removeNode
+  // O(n) linear time - bc indexOf iterates through graphs array
+// hasEdge
+  // 1n + 1n + 2n
+    // contains is  2n because it is a tuple
+  // O(n) linear time - iterates through graphs array
+// addEdge
+  // O(n) linear time - iterates through graphs array with indexOf
+// removeEdge
+  // O(n) linear time - iterates through graphs array with indexOf
+// forEachNode
+  // O(n) linear time- iterates through each node

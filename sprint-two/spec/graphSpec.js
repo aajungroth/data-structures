@@ -68,4 +68,41 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+
+  // it('should ....', function() {
+  //   var connectToFive = function(item) {
+  //     graph.addEdge(item, 5);
+  //   };
+  //   graph.addNode(5);
+  //   graph.addNode(6);
+  //   graph.addNode(5);
+  //   graph.addNode(6);
+  //   graph.addEdge(5, 6);
+  //   graph.addEdge(6,6);
+  //   graph.addEdge(5, 6);
+  //   graph.addEdge(6, 5);
+  //   graph.addEdge(5, 5);
+  //
+  //   console.log('(0, 1) =>', graph.hasEdge(5, 6));
+  //   console.log('(1, 1) =>', graph.hasEdge(6, 6));
+  //   console.log('(0, 1) =>', graph.hasEdge(5, 6));
+  //   console.log('(1, 0) =>', graph.hasEdge(6, 5));
+  //   console.log('(0, 0) =>', graph.hasEdge(5, 5));
+  //   console.log('GRAPH', graph)
+  // });
+
+  it('should execute a callback on each node connected to the target node', function() {
+    var graphList = [];
+    var connectNodes = function(item) {
+      graphList.push(item);
+    };
+    graph.addNode(5);
+    graph.addNode(2);
+    graph.addNode(1);
+    graph.addNode(3);
+    graph.forEachNode(connectNodes);
+    console.log('graphList', graphList);
+    expect(graphList).to.eql([5,2,1,3]);
+  });
+
 });
