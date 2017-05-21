@@ -47,7 +47,16 @@ storageMethods.contains = function(nodeValue) {
   }
 };
 
-storageMethods.depthFirstLog = function() {};
+storageMethods.depthFirstLog = function(cb) {
+  cb(this.value);
+  if (this.right !== null) {
+    this.right.depthFirstLog(cb);
+  }
+  if (this.left !== null) {
+    this.left.depthFirstLog(cb);
+  }
+};
+
 
 /*
  * Complexity: What is the time complexity of the above functions?
