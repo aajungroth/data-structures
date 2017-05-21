@@ -13,36 +13,69 @@ var BinarySearchTree = function(nodeValue) {
 var storageMethods = {};
 
 storageMethods.insert = function(nodeValue) {
-  if (nodeValue > this.value) {
-    if (this.right === null) {
-      this.right = BinarySearchTree(nodeValue);
+  if (typeof nodeValue === 'number') {
+    if (nodeValue > this.value) {
+      if (this.right === null) {
+        this.right = BinarySearchTree(nodeValue);
+      } else {
+        this.right.insert(nodeValue);
+      }
     } else {
-      this.right.insert(nodeValue);
+      if (this.left === null) {
+        this.left = BinarySearchTree(nodeValue);
+      } else {
+        this.left.insert(nodeValue);
+      }
     }
-  } else {
-    if (this.left === null) {
-      this.left = BinarySearchTree(nodeValue);
+  } else if (typeof nodeValue === 'string'){
+    if (nodeValue.length > this.value.length) {
+      if (this.right === null) {
+        this.right = BinarySearchTree(nodeValue);
+      } else {
+        this.right.insert(nodeValue);
+      }
     } else {
-      this.left.insert(nodeValue);
+      if (this.left === null) {
+        this.left = BinarySearchTree(nodeValue);
+      } else {
+        this.left.insert(nodeValue);
+      }
     }
   }
+
 };
 
 storageMethods.contains = function(nodeValue) {
   if (nodeValue === this.value) {
     return true;
   }
-  if (nodeValue > this.value) {
-    if (this.right === null) {
-      return false;
+  if (typeof nodeValue === 'number') {
+    if (nodeValue > this.value) {
+      if (this.right === null) {
+        return false;
+      } else {
+        return this.right.contains(nodeValue);
+      }
     } else {
-      return this.right.contains(nodeValue);
+      if (this.left === null) {
+        return false;
+      } else {
+        return this.left.contains(nodeValue);
+      }
     }
-  } else {
-    if (this.left === null) {
-      return false;
+  } else if (typeof nodeValue === 'string') {
+    if (nodeValue.length > this.value.length) {
+      if (this.right === null) {
+        return false;
+      } else {
+        return this.right.contains(nodeValue);
+      }
     } else {
-      return this.left.contains(nodeValue);
+      if (this.left === null) {
+        return false;
+      } else {
+        return this.left.contains(nodeValue);
+      }
     }
   }
 };
@@ -60,4 +93,7 @@ storageMethods.depthFirstLog = function(cb) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * insert O(log(n)) Divides the search space in half with each iteration
+ * contains O(log(n)) Divides the search space in half with each iteration
+ * depthFirstLog O(n) It applys the call back to every single node
  */
