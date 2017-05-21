@@ -1,5 +1,3 @@
-
-
 var HashTable = function() {
   this._limit = 8;
   this._storage = LimitedArray(this._limit);
@@ -51,3 +49,9 @@ HashTable.prototype.remove = function(k) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+// Insert is constant time O(1)
+  // we can do constant time lookup due to hashing function
+// Retrieve is constant time O(1)
+  // we can do constant time lookup due to hashing function
+// Remove is constant time O(1)
+  // we can do constant time lookup due to hashing function

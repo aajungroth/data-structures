@@ -73,4 +73,9 @@ describe('hashTable', function() {
     hashTable.remove('Mr.');
     expect(hashTable._limit).to.equal(8);
   });
+
+  it('should store numerical keys as string that were inserted', function() {
+    hashTable.insert('1', '42');
+    expect(hashTable.retrieve('1')).to.equal('42');
+  });
 });
