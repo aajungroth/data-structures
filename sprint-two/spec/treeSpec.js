@@ -41,4 +41,21 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should run a call back on every value in the tree', function() {
+    var result = [];
+    var treeToArray = function(value) {
+      result.push(value);
+    };
+
+    tree.addChild(1);
+    tree.addChild(2);
+    tree.addChild(3);
+    tree.children[0].addChild(4);
+    tree.children[0].addChild(5);
+    tree.children[1].addChild(6);
+    tree.children[1].addChild(7);
+    tree.forEachTree(treeToArray);
+    console.log(tree);
+    expect(result).to.eql([undefined, 1, 4, 5, 2, 6, 7, 3]);
+  });
 });

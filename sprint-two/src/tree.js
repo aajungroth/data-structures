@@ -29,8 +29,21 @@ treeMethods.contains = function(target) {
   return false;
 };
 
+treeMethods.forEachTree = function(cb) {
+  //run call back on the current tree
+  cb(this.value);
 
+  //iterate over the trees children
+  for (var i = 0; i < this.children.length; i++) {
+    //recurse on the children
+    this.children[i].forEachTree(cb);
+  }
+};
 
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+//add child O(1) because we are inserting to the back of the array
+//contains O(n) we are iterating on every child in the tree in the worst case
+  //even though it a recursive function, it only iteratives over everything  //once
+//forEachTree O(n) we iterate on every single node in the tree
