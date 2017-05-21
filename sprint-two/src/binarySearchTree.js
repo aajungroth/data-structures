@@ -1,7 +1,7 @@
-var BinarySearchTree = function(value) {
+var BinarySearchTree = function(nodeValue) {
 
   var storage = {};
-  storage.value = value;
+  storage.value = nodeValue;
   storage.left = null;
   storage.right = null;
 
@@ -10,45 +10,43 @@ var BinarySearchTree = function(value) {
   return storage;
 };
 
-
 var storageMethods = {};
 
-
-storageMethods.insert = function(value) {
-  if (value > this.value) {
+storageMethods.insert = function(nodeValue) {
+  if (nodeValue > this.value) {
     if (this.right === null) {
-      this.right = BinarySearchTree(value);
+      this.right = BinarySearchTree(nodeValue);
     } else {
-      this.right.insert(value);
+      this.right.insert(nodeValue);
     }
   } else {
     if (this.left === null) {
-      this.left = BinarySearchTree(value);
+      this.left = BinarySearchTree(nodeValue);
     } else {
-      this.left.insert(value);
+      this.left.insert(nodeValue);
     }
   }
-
 };
 
-//BinarySearchTree(value);
-// storageMethods.insert = function(value) {
-//   var next;
-//   // right node or left node
-//   do {
-//     // if not null then...
-//     if (value > this.value) {
-//       // next
-//       next = this.right;
-//     } else {
-//       next = this.left;
-//     }
-//   } while (next !== null);
-//
-//   next = BinarySearchTree(value);
-// };
+storageMethods.contains = function(nodeValue) {
+  if (nodeValue === this.value) {
+    return true;
+  }
+  if (nodeValue > this.value) {
+    if (this.right === null) {
+      return false;
+    } else {
+      return this.right.contains(nodeValue);
+    }
+  } else {
+    if (this.left === null) {
+      return false;
+    } else {
+      return this.left.contains(nodeValue);
+    }
+  }
+};
 
-storageMethods.contains = function() {};
 storageMethods.depthFirstLog = function() {};
 
 /*
