@@ -42,8 +42,20 @@ var LinkedList = function() {
     return false;
   };
 
+  list.forEachNode = function(cb) {
+    var nextNode = list.head;
+
+    while(nextNode.next !== null) {
+      cb(nextNode);
+      nextNode = nextNode.next;
+    }
+    cb(nextNode);
+  };
+
   return list;
 };
+
+
 
 var Node = function(value) {
   var node = {};
@@ -54,6 +66,18 @@ var Node = function(value) {
   return node;
 };
 
+
+
+
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+// addToTail
+  // O(1) constant time because of refernce to tail
+// removeHead
+  // O(1) constant time - reference to head
+// contains
+  // O(n) linear time - start at head and worst case end at tail
+// forEachNode
+  // O(n) linear time- iterate through everything
