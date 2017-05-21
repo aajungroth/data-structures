@@ -6,7 +6,7 @@ var Graph = function() {
   this.edges = [];
 };
 var graph = new Graph();
-console.log(graph);
+//console.log(graph);
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
   this.nodes.push(node);
